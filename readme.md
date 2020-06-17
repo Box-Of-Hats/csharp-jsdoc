@@ -1,62 +1,37 @@
-# ts-csharp
+# csharp-jsdoc
 
-Convert typescript interfaces to csharp classes
+Convert C# classes to JSDoc type definitions
 
 ## Example usage
 
-```javascript
+```C#
 import { convertInterfacesToCSharp } from "ts-csharp";
 
-const myTypescriptClassString = `
-interface MyTypescriptClass {
-    propOne : any;
-    propTwo : string;
-    propThree : number[];
-    propFour : boolean;
-}
-
-interface AnotherTypescriptClass {
-    nestedObjectsInAList : MyTypescriptClass[];
-    recursiveObject : AnotherTypescriptClass;
-    isReallyCool : boolean;
+const myCsharpClass = `
+public class Beans {
+    public string PropOne { get; set; }
+    public decimal PropTwo { get; set; }
+    public int PropThree { get; set; }
+    public List<int> PropFour { get; set; }
+    public IEnumerable<decimal> PropFive;
+    public IEnumerable<OtherClass> PropSix;
 }
 `;
 
-const myCsharpClass = convertInterfacesToCSharp(myTypescriptClassString);
+const jsDocDefinition = convertInterfacesToCSharp(myCsharpClass);
 
-console.log(myCsharpClass);
 ```
 
-Generates the following code:
+Generates the following type definition:
 
-```c#
-
-public class MyTypescriptClass {
-
-    [JsonProperty("propOne")]
-    public object PropOne;
-
-    [JsonProperty("propTwo")]
-    public string PropTwo;
-
-    [JsonProperty("propThree")]
-    public IEnumerable<int> PropThree;
-
-    [JsonProperty("propFour")]
-    public bool PropFour;
-
-}
-
-public class AnotherTypescriptClass {
-
-    [JsonProperty("nestedObjectsInAList")]
-    public IEnumerable<MyTypescriptClass> NestedObjectsInAList;
-
-    [JsonProperty("recursiveObject")]
-    public AnotherTypescriptClass RecursiveObject;
-
-    [JsonProperty("isReallyCool")]
-    public bool IsReallyCool;
-
-}
+```javascript
+/**
+ * @typedef {Object} Beans
+ * @property {string} PropOne
+ * @property {number} PropTwo
+ * @property {number} PropThree
+ * @property {number[]} PropFour
+ * @property {number[]} PropFive
+ * @property {any[]} PropSix
+ **/
 ```
