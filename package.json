@@ -1,7 +1,7 @@
 {
-    "name": "ts-csharp",
-    "version": "0.2.0",
-    "description": "Convert typescript code to csharp code.",
+    "name": "csharp-jsdoc",
+    "version": "0.1.0",
+    "description": "Convert csharp classes to JSDoc types.",
     "main": "lib/index.js",
     "files": [
         "lib/index.js"
