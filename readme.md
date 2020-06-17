@@ -5,7 +5,7 @@ Convert C# classes to JSDoc type definitions
 ## Example usage
 
 ```C#
-import { convertInterfacesToCSharp } from "ts-csharp";
+import { convertClassToJsdocType } from "csharp-jsdoc";
 
 const myCsharpClass = `
 public class Beans {
@@ -18,7 +18,7 @@ public class Beans {
 }
 `;
 
-const jsDocDefinition = convertInterfacesToCSharp(myCsharpClass);
+const jsDocDefinition = convertClassToJsdocType(myCsharpClass);
 
 ```
 
