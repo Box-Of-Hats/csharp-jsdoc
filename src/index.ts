@@ -1,7 +1,7 @@
 const interfaceNameRegex = /public class ([a-zA-Z0-9?]+) /g;
 const propertyRegex = /public ([a-zA-Z?\<\>\[\]]+ [a-zA-Z0-9]+).*;/g;
 
-export interface JsDocProperty {
+interface JsDocProperty {
     property: string;
     type: string;
 }
@@ -65,7 +65,7 @@ export const convertClassToJsdocType = (
     return jsdocType(interfaceName, jsdocProps);
 };
 
-export const extractInterfaceName = (tsInterface: string): string => {
+const extractInterfaceName = (tsInterface: string): string => {
     interfaceNameRegex.lastIndex = 0;
     let matches = interfaceNameRegex.exec(tsInterface);
     if (!matches || matches.length === 0) {
@@ -74,7 +74,7 @@ export const extractInterfaceName = (tsInterface: string): string => {
     return matches[matches.length - 1];
 };
 
-export const extractProperties = (csharpClass: string): JsDocProperty[] => {
+const extractProperties = (csharpClass: string): JsDocProperty[] => {
     propertyRegex.lastIndex = 0;
 
     let matches = csharpClass.match(propertyRegex);

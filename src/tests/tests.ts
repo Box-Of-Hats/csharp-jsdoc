@@ -1,10 +1,6 @@
 import assert from "assert";
 
-import {
-    convertClassToJsdocType,
-    extractInterfaceName,
-    extractProperties,
-} from "../index";
+import { convertClassToJsdocType } from "../index";
 
 suite("Interface conversion tests", () => {
     test("generate type - single class", () => {
